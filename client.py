@@ -45,7 +45,12 @@ if __name__ == '__main__':
     time_start = time.time_ns()
     # 启动线程
     for t in thread_list:
-        t.start()
+        while True:
+            try:
+                t.start()
+                break
+            except Exception as e:
+                pass
     # 等待线程运行结束
     for t in thread_list:
         t.join()
